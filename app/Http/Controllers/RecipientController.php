@@ -85,9 +85,15 @@ class RecipientController extends Controller
      * @param  \App\Models\Recipient  $recipient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipient $recipient)
+    public function edit(Request $request, $id)
     {
-        //
+        $updt = Recipient::findOrFail($id);
+        $updt->recipients            = $request->input('recipients');
+        $updt->recipients_div        = $request->input('recipients_div');
+        $updt->recipients_branch     = $request->input('recipients_branch');
+        $updt->update($request->all());
+
+        return redirect()->back()->with('success', 'Recipient edit successfully!');
     }
 
     /**

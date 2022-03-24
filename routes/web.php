@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarpController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\InitiatorController;
 use App\Http\Controllers\RecipientController;
@@ -29,3 +30,10 @@ Route::get('recipient', [RecipientController::class, 'show']);
 Route::post('action_recipient', [RecipientController::class, 'create'])->name('post.recipient');
 Route::get('action_edit_recipient/{id}', [RecipientController::class, 'edit']);
 Route::get('action_del_recipient/{id}', [RecipientController::class, 'destroy']);
+
+Route::get('carp_post', [CarpController::class, 'index']);
+Route::get('carp', [CarpController::class, 'store']);
+Route::post('action_carp', [CarpController::class, 'create'])->name('post.carp');
+Route::get('action_del_carp/{id}', [CarpController::class, 'destroy']);
+Route::get('edit_carp/{id}', [CarpController::class, 'show']);
+Route::post('action_edit_carp/{id}', [CarpController::class, 'update']);

@@ -86,13 +86,13 @@ class InitiatorController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $updt_kate = Initiator::findOrFail($id);
-        $updt_kate->initiators            = $request->input('initiators');
-        $updt_kate->initiators_div        = $request->input('initiators_div');
-        $updt_kate->initiators_branch     = $request->input('initiators_branch');
-        $updt_kate->update($request->all());
+        $updt = Initiator::findOrFail($id);
+        $updt->initiators            = $request->input('initiators');
+        $updt->initiators_div        = $request->input('initiators_div');
+        $updt->initiators_branch     = $request->input('initiators_branch');
+        $updt->update($request->all());
 
-        return redirect()->back()->with('success', 'Category edit successfully!');
+        return redirect()->back()->with('success', 'Initiator edit successfully!');
     }
 
     /**

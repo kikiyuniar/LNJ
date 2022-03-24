@@ -54,7 +54,7 @@
                                         <input type="text" class="form-control" id="recipient_branch" name="recipients_branch">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>

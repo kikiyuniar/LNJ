@@ -54,7 +54,7 @@
                                         <input type="text" class="form-control" id="initiator_branch" name="initiators_branch">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>

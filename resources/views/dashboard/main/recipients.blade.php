@@ -4,7 +4,7 @@
         <div class="container-fluid">
 
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">recipient</h1>
+                <h1 class="h3 mb-0 text-gray-800">Recipients</h1>
             </div>
             @if (session('errors'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -57,7 +57,7 @@
                                     <td>{{$item->recipients_div}}</td>
                                     <td>{{$item->recipients_branch}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-warning">Edit</button>
+                                        <button type="button" class="btn btn-outline-warning"  data-toggle="modal" data-target="#modalForm{{ $item->id}}">Edit</button>
                                         <a href="{{url('action_del_recipient')}}/{{ $item->id }}" onclick="return confirm('Delete {{$item->recipients}} Are you sure?,\nYou wont be able to revert this!?')" class="btn btn-outline-danger">Delete</a>
                                     </td>
                                 </tr>
@@ -69,5 +69,44 @@
             </div>
 
         </div>
-
+<!-- Modal Form Recipients --> 
+@foreach ($recipients as $item)
+    <div class="modal fade" id="modalForm{{$item->id}}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Recipient</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url('action_edit_recipient')}}/{{$item->id}}" class="form-validate is-alter" method="get" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="id" value="{{$item->id}}" hidden>
+                        <div class="form-group">
+                            <label class="form-label" for="full-name">Recipient</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" id="full-name" value="{{$item->recipients}}" required name="recipients">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="full-name">Recipient Div</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" value="{{$item->recipients_div}}" name="recipients_div" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="full-name">Recipient Branch</label>
+                            <div class="form-control-wrap">
+                                <input type="text" class="form-control" value="{{$item->recipients_branch}}" name="recipients_branch" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                            <a href=" " class="btn btn-lg btn-danger">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
 @endsection
